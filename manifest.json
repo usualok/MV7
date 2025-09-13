@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "X Auto-Reply Bot",
+  "version": "1.2",
+  "description": "Analyse un post sur X, génère une réponse via Ollama et la poste automatiquement avec logs détaillés.",
+  "permissions": ["activeTab", "scripting", "tabs"],
+  "host_permissions": ["https://x.com/*", "http://localhost:11434/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "X Auto-Reply Bot"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://www.x.com/*",
+        "https://mobile.x.com/*",
+        "https://twitter.com/*",
+        "https://www.twitter.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "externally_connectable": {
+    "ids": ["igifhedmoneldjgehjcfbaekjofefekh"]
+  }
+}
